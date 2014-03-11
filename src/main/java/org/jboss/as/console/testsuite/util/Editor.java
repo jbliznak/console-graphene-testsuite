@@ -109,6 +109,18 @@ public class Editor extends BaseFragment {
         return input.isSelected();
     }
 
+
+    /**
+     *  Returns a property editor object found within editor's root.
+     *
+     * @return a property editor
+     */
+    public PropertyEditor properties() {
+        PropertyEditor properties = Console.withBrowser(browser).getPropertyEditor(root);
+
+        return properties;
+    }
+
     private WebElement findTextElement(String identifier) {
         WebElement text = null;
         try {

@@ -162,20 +162,30 @@ public class Console {
     }
 
 
-    public WebElement getTableRootByHeaderCell(String label, WebElement root) {
+    public <T extends ResourceTableFragment> T getTableByHeader(String label, Class<T> clazz,
+                                                                WebElement root) {
         String cssClass = PropUtils.get("tables.default.class");
-        String tableSelector = "table[contains(@class, ': + cssClass + ')";
-        String headerSelector = "//th[contains(text(), '" + label + "']";
+
+        String tableSelector = "table[contains(@class, '" + cssClass + "')]";
+        String headerSelector = "//th/descendant-or-self::*[contains(text(), '" + label + "')]";
         By selector = By.xpath(".//" +tableSelector + headerSelector +
-                "/descendant::" + tableSelector);
+                "/ancestor::" + tableSelector);
 
         WebElement tableRoot = findElement(selector, root);
+        T table = Graphene.createPageFragment(clazz, tableRoot);
 
-        return tableRoot;
+        return table;
     }
 
-    public WebElement getTableRootByHeaderCell(String label) {
-        return getTableRootByHeaderCell(label, null);
+
+    public ResourceTableFragment getTableByHeader(String label) {
+        return getTableByHeader(label, ResourceTableFragment.class, null);
+    }
+
+    public PropertyEditor getPropertyEditor(WebElement root) {
+        PropertyEditor properties = Graphene.createPageFragment(PropertyEditor.class, root);
+
+        return properties;
     }
 
     public WebElement findElement(By selector, WebElement root) {
