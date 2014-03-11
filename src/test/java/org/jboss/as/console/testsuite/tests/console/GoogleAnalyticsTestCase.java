@@ -1,4 +1,4 @@
-package org.jboss.as.console.testsuite.tests;
+package org.jboss.as.console.testsuite.tests.console;
 
 import org.jboss.as.console.testsuite.fragments.shared.modals.SettingsWindow;
 import junit.framework.Assert;
