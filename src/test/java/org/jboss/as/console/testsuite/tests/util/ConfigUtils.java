@@ -5,6 +5,8 @@ import org.jboss.as.console.testsuite.util.PropUtils;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Properties;
 
 /**
@@ -75,4 +77,12 @@ public class ConfigUtils {
         return get("suite.url.context.path", "/console/App.html");
     }
 
+    public static URL getUrl() {
+        try {
+            URL url = new URL(getProtocol(), getHost(), getPort(), getContext());
+            return url;
+        } catch (MalformedURLException e) {
+            throw new RuntimeException("Invalid url", e);
+        }
+    }
 }

@@ -24,4 +24,8 @@ public class DatasourcesPage extends ConfigPage {
         return addResource(DatasourceWizard.class);
     }
 
+    public void switchToXA() {
+        switchTab("XA Datasources");
+    }
+
 }

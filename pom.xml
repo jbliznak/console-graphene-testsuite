@@ -118,6 +118,10 @@
             <id>eap</id>
             <properties>
                 <arquillian.launch>eap</arquillian.launch>
+                <test.category>
+                    org.jboss.as.console.testsuite.tests.categories.SharedTest,
+                    org.jboss.as.console.testsuite.tests.categories.StandaloneTest
+                </test.category>
             </properties>
             <activation>
                 <activeByDefault>true</activeByDefault>
@@ -135,6 +139,10 @@
             <properties>
                 <arquillian.launch>eap-domain</arquillian.launch>
                 <jboss.dist>${jboss.dist}</jboss.dist>
+                <test.category>
+                    org.jboss.as.console.testsuite.tests.categories.SharedTest,
+                    org.jboss.as.console.testsuite.tests.categories.DomainTest
+                </test.category>
             </properties>
             <dependencies>
                 <dependency>
@@ -167,6 +175,9 @@
                         <jboss.dist>${jboss.dist}</jboss.dist>
                     </systemPropertyVariables>
                     <argLine>${argLine}</argLine>
+                    <groups>
+                        ${test.category}
+                    </groups>
                 </configuration>
             </plugin>
         </plugins>

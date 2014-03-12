@@ -24,7 +24,6 @@ public abstract class BasePage {
     @FindByJQuery("#header-links-section")
     private HeaderTabs headerNavigation;
 
-    @FindByJQuery("#main-content-area div[role='navigation'] .gwt-Tree")
     private NavigationFragment navigation;
 
     @FindBy(className = "footer-panel")
@@ -35,6 +34,14 @@ public abstract class BasePage {
     }
 
     public NavigationFragment getNavigation() {
+        if (navigation != null) {
+            return navigation;
+        }
+
+        By selector = ByJQuery.selector("#main-content-area div[role='navigation'] .gwt-Tree");
+        WebElement navigationRoot = browser.findElement(selector);
+        navigation = Graphene.createPageFragment(NavigationFragment.class, navigationRoot);
+
         return navigation;
     }
 

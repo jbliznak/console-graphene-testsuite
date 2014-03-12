@@ -7,9 +7,11 @@ import org.jboss.arquillian.graphene.Graphene;
 import org.jboss.arquillian.graphene.page.Page;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.junit.InSequence;
+import org.jboss.as.console.testsuite.tests.categories.SharedTest;
 import org.jboss.as.console.testsuite.util.PropUtils;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
@@ -21,6 +23,7 @@ import org.jboss.as.console.testsuite.util.Console;
  * Created by jcechace on 15/02/14.
  */
 @RunWith(Arquillian.class)
+@Category(SharedTest.class)
 public class GoogleAnalyticsTestCase {
 
     @Drone
